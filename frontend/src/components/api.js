@@ -26,12 +26,24 @@ export default function Images() {
         console.log(imageUrl+array[image]);
     }
 
-    return (
+    function servePrevImage() {
+        setImage(image-1);
+        if(image<=0)
+            setImage(49);
+        console.log(imageUrl+array[image]);
+    }
 
-        <div>
-            <button onClick={serveNextImage}>Click me</button>
+    return (
+        <>
+        <h1>{array[image]}</h1>
+        <div className='content'>
+            <button onClick={servePrevImage}>Prev</button>
             <br></br>
             <img className="image" src={imageUrl+array[image]} alt="image"/>
+            <br></br>
+            <button onClick={serveNextImage}>Next</button>
         </div>
+        </>
+        
     );
 }
