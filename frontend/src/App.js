@@ -1,6 +1,6 @@
 import './App.css';
 
-import Api from './components/api';
+import Images from './components/api';
 
 function Title() {
   return (
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Title />
-      <Api />
+      <Images />
     </>
   ); 
 }
