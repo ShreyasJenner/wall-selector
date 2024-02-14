@@ -1,12 +1,67 @@
-.image {
-    width: 30%;
-    height: 30%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.content {
-    display: flex;
-    flex-direction: row;
+.gallery {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.7s;
+}
+
+.gallery span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+.gallery span img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-container {
+    position: relative;
+    width: 80%;
+}
+
+.btn {
+    position: absolute;
+    bottom: -80px;
+    background-color: slateblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(1.5);
+}
+
+#prev {
+    left: 20%;
+}
+
+#random {
+    left: 45%;
+}
+
+#next {
+    right: 20%;
 }
