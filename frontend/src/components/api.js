@@ -8,7 +8,8 @@ const imageUrl = "http://localhost:8080/images/";
 export default function Images() {
 
     const [array, setArray] = React.useState([]);
-    const [curr, setIndex] = React.useState(0);
+    const [index, setIndex] = React.useState(0);
+    const [currImage, setCurr] = React.useState("");
     
     const getImage = async () => {
         const res = await axios.get(apiUrl+"list");
@@ -19,61 +20,33 @@ export default function Images() {
         getImage()
     }, []);
 
-    function next() {
-        setIndex(curr+140);
-    }
-
-    function prev() {
-        setIndex(curr-140);
-    }
-
-    function random() {
-        const rand = Math.floor(Math.random()*100);
-        let i=1;
-        while(i<rand) {
-            next();
-            i++;
-        }
-    }
-
-    let angle = (array.length-2)*180;
-    angle = angle/array.length;
-
-    const images = array.map((image,index) => {
-        const styles= {
-            transform: `rotateY(calc(${index+curr}*${angle}deg)) translateZ(400px)`
-        };
-
-        const size = {
-            width: `100px`,
-            height: `100px`
-        };
-
+    function ServeImage() {
+        setCurr(array[index]);
         return (
-            <>
-            <span style={styles}>
-                <img style={size} src={imageUrl+image} alt="image render" />
-            </span>
-            </>
-        );
-    });    
+            <div className="image">
+                <img src={imageUrl+currImage} alt="image" />
+            </div>
+        )
+    }
 
-    const galleryStyles = {
-        transform: `perspective(1000px) rotateY(${curr}deg)`
-    };
-    
+    function changeImage() {
+        setIndex((index+1)%array.length);
+    }
+
+    setInterval(changeImage,3000)
+
     return (
         <>
-        <div className="body">
-            <div className='gallery' style={galleryStyles}>
-                {images}
+        <div className="main">
+            <div className="gallery">
+                <ServeImage />
             </div>
 
-            <div className="btn-container">
-                <div className="btn" id="prev" onClick={prev}>Prev</div>
-                <div className="btn" id="random" onClick={random}>Random</div>
-                <div className="btn" id="next" onClickCapture={next}>Next</div>
+        <div className="btn-container">
+            <div className="btn">
+            <button onClick={changeImage}>Next</button>
             </div>
+        </div>
         </div>
         </>
     );
