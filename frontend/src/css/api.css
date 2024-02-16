@@ -9,37 +9,24 @@
     height: 100%;
 }
 
-@keyframes roter {
-    /*
-    0% {
-        left: 0%;
-        transform: rotateY(0deg);
-        opacity: 1;
-    }
-    25% {
-        left: 25%;
-        transform: perspective(500px) rotateY(10deg);
-        opacity: 0.75;
-    }
-    50% {
-        left: 50%;
-        transform: perspective(500px) rotateY(20deg);
-        opacity: 0.5;
-    }
-    75% {
-        left: 75%;
-        transform: perspective(500px) rotateY(30deg);
-        opacity: 0.25;
-    }
-    100% {
-        left: 100%;
-        transform: perspective(500px) rotateY(40deg);
-        opacity: 0;
-    }
-    */
+/*
+@keyframes roter-left {
     from {
         left: 0%;
-        transform: perspective(1000px) rotateY(-80deg);
+        transform: perspective(1000px) rotateY(-60deg) translateZ(288px);
+        opacity: 1;
+    } 
+    to {
+        left: 40%;
+        transform: perspective(1000px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes roter {
+    from {
+        left: 40%;
+        transform: perspective(1000px) rotateY(0deg);
         opacity: 1;
     }
     to {
@@ -49,15 +36,96 @@
     }
 }
 
+@keyframes roter-right {
+    from {
+        left: 70%;
+        transform: perspective(1000px) rotateY(75deg) translateZ(200px);
+        opacity: 1;
+    }
+    to {
+        left: 100%;
+        transform: perspective(1000px) rotateY(75deg) translateZ(400px);
+        opacity: 0;
+    }
+    
+}
+*/
+
+@keyframes roter-entering {
+    from {
+        left: 0%;
+        transform: perspective(1000px) rotateY(-60deg) translateZ(200px);
+    } 
+    to {
+        left: 10%;
+        transform: perspective(1000px) rotateY(-50deg);
+    }
+}
+
+@keyframes roter-left {
+   from {
+    left: 10%;
+    transform: perspective(1000px) rotateY(-50deg);
+   } 
+   to {
+    left: 40%;
+    transform: perspective(1000px) rotateY(0deg);
+   }
+    
+}
+
+@keyframes roter-right {
+    from {
+        left: 40%;
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    to {
+        left: 80%;
+        transform: perspective(1000px) rotateY(50deg);
+    }
+}
+
+@keyframes rotor-leaving {
+    from {
+        right : 20%;
+        transform: perspective(1000px) rotateY(50deg);
+    }  
+    to {
+        right : 0%;
+        transform: perspective(1000px) rotateY(60deg) translateZ(200px);
+    }
+}
+
+#enter {
+    animation-name: roter-entering;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#left {
+    animation-name: roter-left;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#right {
+    animation-name: roter-right;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#exit {
+    animation-name: roter-leaving;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
 .image img {
     position: absolute;
     top: 30%;
     width:20%; 
     height: auto;
     transform-origin: center;
-    animation-name: roter;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
 }
 
 .btn-container {
